@@ -11,6 +11,15 @@
     position: absolute;
     width: 100%;
 
+    .site-id {
+        display: flex;
+        align-items: center;
+    }
+
+    .logomark {
+        margin-right: 1em;
+    }
+
     a {
         color: white;
         text-decoration: none;
@@ -23,6 +32,7 @@
         letter-spacing: 3px;
         margin: 0;
     }
+
 } 
 
 /* SITE FOOTER */
@@ -57,6 +67,9 @@
 
 section {
     padding: 4em 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 /* HERO SECTION */
