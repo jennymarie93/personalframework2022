@@ -50,12 +50,60 @@
 
         .menu-button {
             background-color: transparent;
-            border: 1px solid white;
+            border: none;
             color: white;
-            padding: .5em 1em;
+            padding: .7em;
             position: relative;
-            margin-right: 3em;
             z-index: 20;
+
+            svg {
+                display: block;
+
+                rect {
+                    fill: white;
+                }
+            }
+        }
+
+        // SIMPLE-X-ANIMATION
+        .menu-button svg.simple-x-animation rect {
+                transform-origin: center;
+                transition: all .3s ease-out;
+        }
+
+        &[data-navstate="open"] .menu-button svg.simple-x-animation {
+      
+            #menubar-top { transform: translate(-5px, 9px) rotate(30deg); }
+            #menubar-mid { transform: scale(0,1); }#menubar-bot { transform: translate(-5px, -9px) rotate(-30deg); }
+        }
+
+        // SQUISH-X-ANIMATION
+        .menu-button svg.squish-x-animation rect {
+            transform-origin: center;
+            &#menubar-mid {
+                transition: all 0s linear .3s;
+            }
+        }
+
+        &[data-navstate="open"] .menu-button svg.squish-x-animation {
+            rect {
+                animation-duration: .6s;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease-out;
+            }
+            #menubar-top { animation-name: squish-x-top; }
+            #menubar-mid { opacity: 0; }
+            #menubar-bot { animation-name: squish-x-bot; }
+        }
+        @keyframes squish-x-top {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(0, 10px); }
+            100% { transform: translate(-5px, 9px) rotate(30deg); }
+        }
+        @keyframes squish-x-bot {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(0, -10px); }
+            100% { transform: translate(-5px, -9px) rotate(-30deg); }
         }
 
     }
